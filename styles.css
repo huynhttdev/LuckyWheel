@@ -1,0 +1,502 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap");
+
+:root {
+  --wheel-width: 294px;
+  --wheel-background: white;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: calc(var(--wheel-width) / 30);
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+  background-image: url("./images/background.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  height: 100vh;
+  overflow: 0 auto;
+}
+
+/* Start: Content */
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 13rem;
+}
+
+.wrapper .header {
+  width: 100%;
+  margin-top: 2rem;
+  padding-left: 1.6rem;
+  text-align: left;
+}
+
+.wrapper .title {
+  margin-bottom: 1rem;
+  width: 27.3rem;
+}
+
+/* Start: Wheel */
+.wheel-wrapper {
+  padding: 1.43rem;
+  background-image: url("./images/spin-border.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.wheel-wrapper .container {
+  position: relative;
+  width: 30rem;
+  height: 30rem;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.wheel-wrapper .container .spin:active {
+  transform: scale(0.9);
+}
+
+.wheel-wrapper .container .spin {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wheel-wrapper .container .spin .spin-arrow {
+  position: absolute;
+  top: -5.6rem;
+  width: 2.9rem;
+  height: 3.2rem;
+}
+
+.wheel-wrapper .container .spin .btn-spin {
+  position: absolute;
+  width: 8.8rem;
+  height: 8.9rem;
+}
+
+/* Start: Spin button */
+/* .wheel-wrapper .container .spin {
+  width: 6rem;
+  height: 6rem;
+  background-color: #b0271d;
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 0.4rem solid white;
+  user-select: none;
+}
+
+.wheel-wrapper .container .spin::after {
+  position: absolute;
+  top: -2rem;
+  content: "";
+  border-width: 0 1rem 2rem;
+  border-style: solid;
+  border-color: transparent;
+  border-bottom-color: white;
+}
+
+.wheel-wrapper .container .spin .btn-spin {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 0.4rem;
+  cursor: pointer;
+}
+
+.wheel-wrapper .container .spin #turns {
+  font-size: 1rem;
+  color: lightgray;
+  background-color: #ec3637;
+  padding: 0 1rem;
+  border-radius: 1rem;
+  border: 0.1rem solid lightgray;
+} */
+/* End: Spin button */
+
+.wheel-wrapper .container .wheel {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: var(--wheel-background);
+  display: flex;
+  justify-content: center;
+  transition: cubic-bezier(0.19, 1, 0.22, 1) 8s; /* Timeout to postMessage event triggered */
+}
+
+.wheel-wrapper .container .wheel .gift {
+  display: inline-block;
+  position: absolute;
+  border-style: solid;
+  border-color: transparent;
+  border-top-color: var(--bgColor);
+  color: var(--color);
+  border-width: 15rem calc(15.2rem * tan(180deg / var(--number-of-gifts)));
+  transform: rotate(calc(360deg * var(--i) / var(--number-of-gifts)));
+  display: flex;
+  justify-content: center;
+}
+
+.wheel-wrapper .container .wheel .gift .gift-content {
+  position: absolute;
+  top: -14rem;
+  width: calc(2 * 15.2rem * tan(180deg / var(--number-of-gifts)));
+  height: 15rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.wheel-wrapper .container .wheel .gift .gift-content .gift-image {
+  width: 3.6rem;
+  max-height: 4.8rem;
+}
+
+.wheel-wrapper .container .wheel .gift .gift-content .gift-name {
+  font-size: 1.4rem;
+  font-weight: 500;
+  line-height: 2rem;
+  text-align: center;
+  width: calc(10% * var(--number-of-gifts));
+}
+/* End wheel */
+
+.wrapper .turns {
+  color: white;
+  margin-top: 1.2rem;
+  font-size: 1.4rem;
+  line-height: 2rem;
+}
+.wrapper .turns > span {
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 2.4rem;
+}
+
+/* Start: Mission */
+.wrapper .missions {
+  padding: 1.6rem;
+  padding-top: 4.2rem;
+  border: 0.5rem solid #fbdf97;
+  width: 34.3rem;
+  border-radius: 2.4rem;
+  margin-top: 3.2rem;
+  background-color: #fef3c7;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2.4rem;
+}
+.wrapper .missions .missions-img {
+  width: 36.7rem;
+  height: 6.8rem;
+  margin-top: -7rem;
+}
+.wrapper .missions .missions-item {
+  width: 100%;
+  border: 0.3rem solid white;
+  border-radius: 1.2rem;
+  padding: 1.2rem 0 1.2rem 1.2rem;
+  box-shadow: 0 0.4rem 0.8rem 0 #e3760080;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.wrapper .missions .missions-item-img {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+}
+.wrapper .missions .missions-item-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-left: 1rem;
+}
+.wrapper .missions .missions-item-content span:first-child {
+  font-size: 1.4rem;
+  font-weight: 500;
+  line-height: 2rem;
+  color: #c92127;
+}
+.wrapper .missions .missions-item-content span:last-child {
+  font-size: 1.1rem;
+  line-height: 1.6rem;
+  color: #404040;
+}
+.wrapper .missions .missions-item-content span:last-child > span {
+  font-weight: 700;
+  letter-spacing: 0.1rem;
+}
+.wrapper .missions .missions-item-share {
+  background-image: url("./images/yellow-button-share.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  display: inline-block;
+  width: 17rem;
+  height: 4.3rem;
+}
+.wrapper .missions .missions-item-share:active {
+  transform: scale(0.9);
+}
+/* End: Mission */
+
+.wrapper .more-info {
+  width: 100%;
+  max-width: 37.5rem;
+  /* background-color: red; */
+}
+/* End: Content */
+
+/* Start: Actions */
+.actions {
+  position: fixed;
+  z-index: 10;
+  bottom: 0;
+  width: 100vw;
+  height: 12rem;
+  background-color: #d92824;
+  padding-top: 3.4rem;
+  overflow: hidden;
+  text-align: center;
+}
+.actions .actions-guide {
+  width: 12.6rem;
+  height: 5rem;
+  display: inline-block;
+  position: relative;
+}
+.actions .actions-guide:active {
+  transform: scale(0.9);
+}
+.actions .actions-guide .guide-icon {
+  position: absolute;
+  z-index: -1;
+  top: -3.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6.7rem;
+  height: 6.7rem;
+}
+.actions .actions-guide .red-button {
+  display: inline-block;
+  background-image: url("./images/red-button.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+  padding-top: 1rem;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: white;
+  line-height: 2rem;
+}
+.actions .actions-gift {
+  width: 12.6rem;
+  height: 5rem;
+  display: inline-block;
+  position: relative;
+}
+.actions .actions-gift:active {
+  transform: scale(0.9);
+}
+.actions .actions-gift .gift-icon {
+  position: absolute;
+  z-index: -1;
+  top: -3.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 5.9rem;
+  height: 5.9rem;
+}
+.actions .actions-gift .red-button {
+  display: inline-block;
+  background-image: url("./images/red-button.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+  padding-top: 1rem;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: white;
+  line-height: 2rem;
+}
+/* End: Actions */
+
+/* Start: Loading */
+.loading {
+  position: fixed;
+  z-index: 500;
+  top: 0;
+  background-color: #fff;
+  width: 100vw;
+  height: 100vh;
+  display: none;
+}
+.loading .overlay {
+  position: absolute;
+  background-color: rgba(57, 57, 57, 0.5);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.loading .overlay > img {
+  position: absolute;
+  width: 5rem;
+  height: 5rem;
+}
+.loading .overlay .loading-error {
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 1.6rem;
+  overflow: hidden;
+  display: none;
+}
+.loading .overlay .loading-error .loading-error-title {
+  width: 100%;
+  text-align: center;
+  padding: 1.6rem 0;
+  font-size: 1.6rem;
+  font-weight: 500;
+  border-bottom: 1px solid #ddd;
+}
+.loading .overlay .loading-error .loading-error-button {
+  width: 100%;
+  padding: 1.2rem 3.2rem;
+  font-size: 1.6rem;
+  color: #1a79f4;
+  text-align: center;
+}
+.loading .overlay .loading-error .loading-error-button:active {
+  background-color: #eee;
+}
+/* End: Loading */
+
+/* Start: Modal buy success */
+.modal-success {
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  display: none;
+}
+.modal-success .overlay {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.8);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modal-success .overlay .content {
+  border: 0.4rem solid #fbdf97;
+  border-radius: 1.6rem;
+  width: 34rem;
+  background-color: #fef3c7;
+  padding: 5rem 1.6rem 0 1.6rem;
+  position: relative;
+  text-align: center;
+}
+.modal-success .overlay .content .close-icon {
+  position: absolute;
+  top: -4rem;
+  right: -1rem;
+}
+.modal-success .overlay .content .img-success {
+  width: 22.8rem;
+  height: 17.8rem;
+  margin-top: -100%;
+  margin-bottom: 2.4rem;
+}
+.modal-success .overlay .content .img-spin {
+  width: 14.1rem;
+  height: 14.5rem;
+  margin-top: -14.5rem;
+  margin-bottom: 2.4rem;
+}
+.modal-success .overlay .content .text-success {
+  font-size: 1.4rem;
+  line-height: 2rem;
+}
+.modal-success .overlay .content .text-success > span {
+  font-weight: 700;
+}
+.modal-success .overlay .content .success-actions {
+  margin-top: 1.2rem;
+}
+.modal-success .overlay .content .success-actions .view-gift {
+  background-image: url("./images/yellow-button-view-gift.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  display: inline-block;
+  width: 11.8rem;
+  height: 4.7rem;
+}
+.modal-success .overlay .content .success-actions .continue-spin {
+  background-image: url("./images/red-button-continue.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  display: inline-block;
+  width: 14.9rem;
+  height: 4.7rem;
+}
+.modal-success .overlay .content .success-actions .understand {
+  background-image: url("./images/red-button-understand.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  display: inline-block;
+  width: 11.7rem;
+  height: 4.7rem;
+}
+/* End: Modal buy success */
+
+/* Start: Prevent modal */
+.modal-prevent {
+  pointer-events: none;
+  user-select: none;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.8);
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+.modal-prevent span {
+  color: #ddd;
+  font-size: 1.4rem;
+}
+/* End: Prevent modal */

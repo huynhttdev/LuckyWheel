@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+    />
+    <meta property="og:title" content="Vòng quay may mắn - nhận ngay voucher" />
+    <meta
+      property="og:description"
+      content="Vòng quay may mắn - nhận ngay voucher"
+    />
+    <meta property="og:image" content="./images/web1x.png" />
+    <title>Vòng quay may mắn - nhận ngay voucher</title>
+    <link rel="stylesheet" type="text/css" href="./styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+
+  <body onload="onDocumentLoad()">
+    <!-- Start: Content -->
+    <div class="wrapper">
+      <div class="header">
+        <svg
+          id="btn-back"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M9.04287 18.6011C9.19287 18.7511 9.38287 18.8211 9.57287 18.8211C9.76287 18.8211 9.96287 18.7511 10.1029 18.6011C10.3929 18.3111 10.3929 17.8311 10.1029 17.5411L5.31275 12.751H20.5029C20.9129 12.751 21.2529 12.411 21.2529 12.001C21.2529 11.591 20.9129 11.251 20.5029 11.251H5.31299L10.1029 6.4611C10.3929 6.1711 10.3929 5.6911 10.1029 5.4011C9.81287 5.1111 9.33287 5.1111 9.04287 5.4011L2.97287 11.4711C2.68287 11.7611 2.68287 12.2411 2.97287 12.5311L9.04287 18.6011Z"
+            fill="white"
+          />
+        </svg>
+      </div>
+
+      <img class="title" src="./images/title.png" alt="Title" />
+
+      <div class="wheel-wrapper">
+        <div class="container">
+          <!-- <div class="spin">
+              <span class="btn-spin">QUAY</span>
+              <span id="turns"></span>
+            </div> -->
+          <div class="spin">
+            <img
+              class="spin-arrow"
+              src="./images/spin-arrow.png"
+              alt="Spin arrow"
+            />
+            <img class="btn-spin" src="./images/spin-flower.png" alt="Spin" />
+          </div>
+          <div class="wheel"></div>
+        </div>
+      </div>
+
+      <div class="turns">Bạn còn <span id="play-count">0</span> lượt quay</div>
+
+      <div class="missions">
+        <img class="missions-img" src="./images/more-turn.png" />
+        <div class="missions-item">
+          <img class="missions-item-img" src="./svgs/share-svg.svg" />
+          <div class="missions-item-content">
+            <span>Chia sẻ nhận thêm một lượt quay</span>
+            <span>Đã nhận <span id="count-share">0/1</span> lượt quay</span>
+          </div>
+          <div id="btn-share" class="missions-item-share"></div>
+        </div>
+      </div>
+
+      <img class="more-info" src="./images/more-info.png" />
+    </div>
+    <!-- End: Content -->
+
+    <!-- Start: Actions -->
+    <div class="actions">
+      <div class="actions-guide">
+        <img class="guide-icon" src="./images/guide-icon.png" />
+        <div id="btn-guide" class="red-button">Hướng dẫn</div>
+      </div>
+      <div class="actions-gift">
+        <img class="gift-icon" src="./images/gift-icon.png" />
+        <div id="btn-gift" class="red-button">Quà đã nhận</div>
+      </div>
+    </div>
+    <!-- End: Actions -->
+
+    <!-- Start: Loading -->
+    <div id="loading" class="loading">
+      <div class="overlay">
+        <img id="loading-img" src="./images/loading.gif" alt="Loading" />
+        <div id="loading-error" class="loading-error">
+          <div class="loading-error-title"></div>
+          <div id="loading-error-button" class="loading-error-button">
+            Quay trở lại
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End: Loading -->
+
+    <!-- Start: Modal receive gift -->
+    <div id="modal" class="modal-success">
+      <div class="overlay">
+        <div class="content">
+          <svg
+            id="close-icon"
+            class="close-icon"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M12 2C6.49 2 2 6.49 2 12C2 17.51 6.49 22 12 22C17.51 22 22 17.51 22 12C22 6.49 17.51 2 12 2ZM15.36 14.3C15.65 14.59 15.65 15.07 15.36 15.36C15.21 15.51 15.02 15.58 14.83 15.58C14.64 15.58 14.45 15.51 14.3 15.36L12 13.06L9.7 15.36C9.55 15.51 9.36 15.58 9.17 15.58C8.98 15.58 8.79 15.51 8.64 15.36C8.35 15.07 8.35 14.59 8.64 14.3L10.94 12L8.64 9.7C8.35 9.41 8.35 8.93 8.64 8.64C8.93 8.35 9.41 8.35 9.7 8.64L12 10.94L14.3 8.64C14.59 8.35 15.07 8.35 15.36 8.64C15.65 8.93 15.65 9.41 15.36 9.7L13.06 12L15.36 14.3Z"
+              fill="white"
+            />
+          </svg>
+          <img
+            id="img-success"
+            class="img-success"
+            src="./images/modal-success.png"
+          />
+          <img id="img-spin" class="img-spin" src="./images/modal-spin.png" />
+          <div id="text-success" class="text-success"></div>
+          <div class="success-actions">
+            <span id="view-gift" class="view-gift"></span>
+            <span id="continue-spin" class="continue-spin"></span>
+            <span id="understand" class="understand"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End: Modal receive gift -->
+
+    <!-- Start: Modal prevent view from normal browser -->
+    <div id="modal-prevent" class="modal-prevent">
+      <span>Không hỗ trợ trình duyệt</span>
+    </div>
+    <!-- End: Modal prevent view from normal browser -->
+
+    <!-- Start: Auth -->
+    <input
+      id="wheelId"
+      placeholder="wheelId"
+      hidden
+      value="65f2ae116ade3c4909e026ce"
+    />
+    <input
+      id="token"
+      placeholder="token"
+      hidden
+      value="eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ijg0Mzc2NjI0OTM0IiwidHlwZSI6ImF0IiwiaWF0IjoxNzA5OTUyMDAyLCJleHAiOjE3MDk5NTI5MDJ9.teHeX7egx0w6Py6sk7CWJsWHryNPDNXhRi199e75RppRrfNSjdEGYunTqz3Q-7OMHL9oqgzJMEKtHpeD8f9kQNogCOu89HZwoffdTLGoZtJHZm2SX6FVjLCzf54Bu_5p0o8NS3WHnuaBOi_W7vVDsIeRPtC46OKZTHcmZpkbIfa_9E4m05Lwkhhqe9gExr6cMmTmZivsixX-Z11BM9dhYW_SlDg-PLW5fTwT0hmAJOCbQQMGDg8E4-UFxOe1HmiwgZPVESJMrqVeId0QBpEceVcFaUqyHiske2U5Fcs54LncSl98S4pV8eT8R1ev_D5S8uGbQrMMKsCpaROtB9gXsg"
+    />
+    <input
+      id="refresh-token"
+      placeholder="refresh-token"
+      hidden
+      value="eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ijg0Mzc2NjI0OTM0IiwidHlwZSI6InJ0IiwiaWF0IjoxNzA5OTUyMDAyLCJleHAiOjE3MTI1NDQwMDJ9.TZBCW5aR3Y88Kb-xxOSU3ucEF4HPupD3rbHsUm-6vwY-uRf8y_pDIsgQ6dw9kWVNTk6Twmiy1WkYbT6XPnTAc_FyjWkwsfXPEtkXXtRQNcXMUlVeEc0RvpDIU8N1OOqoTVNt8ZKlEZKgHj6HVVsfyepCdWsbD_2KqNwjmTdaKUCElom3udDMIUW8Zgqs5Z1OHVgEXbJa4NE5jbUcXWls4_3f3OQJ_KG1JNwjC-6Yo5y8JLl0I8adEftlKVl79ow1btviwxiLRQVDapn4ZPvJecrzCmsYfNf0Hz2_uXaEZMq7rc0s8RNZJf7vyjLO5TjwEA4PJaDBUIsPEWMb9PvTNQ"
+    />
+    <!-- End: Auth -->
+
+    <script type="text/javascript" src="./fake-data.js"></script>
+    <script type="text/javascript" src="./variables.js"></script>
+    <script type="text/javascript" src="./utils.js"></script>
+    <script type="text/javascript" src="./axios-client.js"></script>
+    <script type="text/javascript" src="./api.js"></script>
+    <script type="text/javascript" src="./scripts.js"></script>
+  </body>
+</html>
