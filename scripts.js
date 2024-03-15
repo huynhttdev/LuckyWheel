@@ -48,6 +48,9 @@ btnShare.addEventListener("click", () => {
 });
 
 btnSpin.addEventListener("click", () => {
+  if (getTurns() <= 0) {
+    return showNoMoreTurnsModal();
+  }
   if (isWheelStopped) {
     isWheelStopped = false;
     getSpinResultAPI().then((res) => {

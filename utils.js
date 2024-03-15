@@ -113,6 +113,10 @@ const changeTurns = (num) => {
   playCount.innerText = Number(playCount.innerText) + num;
 };
 
+const getTurns = () => {
+  return Number(playCount.innerText);
+};
+
 // Modal
 const showSuccessModal = (gift) => {
   modal.style.display = "block";
@@ -144,6 +148,19 @@ const showLuckyModal = (gift) => {
   changeTurns(-1);
 };
 
+const showNoMoreTurnsModal = () => {
+  modal.style.display = "block";
+  imgSuccess.style.display = "none";
+  btnContinueSpin.style.display = "none";
+  imgSpin.style.display = "inline-block";
+  btnUnderstand.style.display = "inline-block";
+  textSuccess.innerHTML = `
+    <span style="font-size: 14px; font-weight:700; line-height:20px; color: #EA580C">
+      Bạn đã hết lượt quay. Hãy trở lại vào ngày mai để chơi tiếp nhé!
+    </span>
+  `;
+};
+
 const hideModal = () => {
   modal.style.display = "none";
 };
@@ -157,8 +174,9 @@ const showPreventModal = () => {
 // Common
 const checkRedirectUrl = () => {
   const redirectUrl = window.location.href.split("?redirectUrl=")[1];
+  const cleanRedirectUrl = decodeURIComponent(redirectUrl).split("&fbclid=")[0];
   if (redirectUrl) {
-    window.location.replace(decodeURIComponent(redirectUrl));
+    window.location.replace(cleanRedirectUrl);
     return true;
   } else {
     return false;
