@@ -12,10 +12,7 @@ const getWheelDetailsAPI = () => {
       if (token && wheelId) {
         axiosClient.get(`/spin-games/${wheelId}`).then((response) => {
           if (response.data.data?.spin_game?.items?.length === 8) {
-            renderGame(
-              response.data.data.spin_game,
-              response.data.data.missions
-            );
+            renderGame(response.data.data);
           }
         });
       } else {

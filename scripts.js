@@ -10,12 +10,12 @@ mainTag.addEventListener("message", (message) => {
 });
 
 const onDocumentLoad = () => {
+  if (checkRedirectUrl()) return;
   if (!isWebview(navigator.userAgent)) {
-    showPreventModal();
-  } else if (!checkRedirectUrl()) {
-    loading.style.display = "block";
-    getWheelDetailsAPI();
+    return showPreventModal();
   }
+  loading.style.display = "block";
+  getWheelDetailsAPI();
 };
 
 // Header

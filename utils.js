@@ -103,10 +103,10 @@ const renderMission = (mission) => {
   }
 };
 
-const renderGame = (spinGame, missions) => {
-  renderWheel(spinGame.items);
-  renderPlayCount(spinGame.play_count);
-  renderMission(missions[0]);
+const renderGame = (data) => {
+  renderWheel(data.spin_game.items);
+  renderPlayCount(data.remain_turn_count);
+  renderMission(data.missions[0]);
 };
 
 const changeTurns = (num) => {
@@ -158,7 +158,7 @@ const showPreventModal = () => {
 const checkRedirectUrl = () => {
   const redirectUrl = window.location.href.split("?redirectUrl=")[1];
   if (redirectUrl) {
-    window.location.href = redirectUrl;
+    window.location.replace(decodeURIComponent(redirectUrl));
     return true;
   } else {
     return false;
