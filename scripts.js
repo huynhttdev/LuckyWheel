@@ -5,13 +5,7 @@ mainTag.addEventListener("message", (message) => {
   if (data.wheelId) {
     initData(data);
   } else if (data.share_facebook_success) {
-    doMissionAPI()
-      .then(() => {
-        window.ReactNativeWebView.postMessage("FACEBOOK_SHARE_SUCCESS");
-      })
-      .catch(() => {
-        window.ReactNativeWebView.postMessage("FACEBOOK_SHARE_FAIL");
-      });
+    handleShareSuccess();
   }
 });
 
@@ -61,12 +55,7 @@ btnSpin.addEventListener("click", () => {
       const surplus = totalDegree % 360;
       const spinDegree = (selectedGift.degree - surplus + 360) % 360;
       totalDegree += randomInRange(spinDegree - 40, spinDegree - 5) + 2880;
-
-      if (isAndroid()) {
-        wheel.style.transform = `rotate(${totalDegree}deg)`;
-      } else {
-        wheel.style.webkitTransform = `rotate(${totalDegree}deg)`;
-      }
+      wheel.style.transform = `rotate(${totalDegree}deg)`;
 
       setTimeout(() => {
         isWheelStopped = true;

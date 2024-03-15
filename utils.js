@@ -185,3 +185,15 @@ const isAndroid = () => {
   const ua = navigator.userAgent.toLowerCase();
   return ua.indexOf("android") > -1;
 };
+
+const handleShareSuccess = () => {
+  doMissionAPI()
+    .then(() => {
+      changeTurns(1);
+      countShare.innerHTML = "1/1";
+      window.ReactNativeWebView.postMessage("FACEBOOK_SHARE_SUCCESS");
+    })
+    .catch(() => {
+      window.ReactNativeWebView.postMessage("FACEBOOK_SHARE_FAIL");
+    });
+};

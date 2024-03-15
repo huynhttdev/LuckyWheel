@@ -61,6 +61,8 @@ body {
   height: 30rem;
   border-radius: 50%;
   overflow: hidden;
+  perspective: 900000px;
+  -webkit-perspective: 900000px;
 }
 
 .wheel-wrapper .container .spin:active {
