@@ -109,10 +109,16 @@ const renderMission = (mission) => {
   }
 };
 
+const renderBackground = (imgLink) => {
+  document.body.style.backgroundImage = `url('${imgLink}')`;
+  bgBody.src = imgLink;
+};
+
 const renderGame = (data) => {
   renderWheel(data.spin_game.items);
   renderPlayCount(data.remain_turn_count);
   renderMission(data.missions[0]);
+  renderBackground(data.spin_game.background.link);
 };
 
 const changeTurns = (num) => {

@@ -18,6 +18,7 @@ const wheelWrapper = document.getElementById("wheel-wrapper");
 const turns = document.getElementById("turns");
 const missions = document.getElementById("missions");
 const endGame = document.getElementById("end-game");
+const bgBody = document.getElementById("bg-body");
 
 // Scripts.js file
 const wheel = document.querySelector(".wheel");
