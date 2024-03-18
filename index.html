@@ -40,14 +40,17 @@
         </svg>
       </div>
 
-      <img class="title" src="./images/title.png" alt="Title" />
+      <img
+        id="end-game"
+        class="end-game"
+        src="./images/end-game.png"
+        alt="End game"
+      />
 
-      <div class="wheel-wrapper">
+      <img id="game-title" class="title" src="./images/title.png" alt="Title" />
+
+      <div id="wheel-wrapper" class="wheel-wrapper">
         <div class="container">
-          <!-- <div class="spin">
-              <span class="btn-spin">QUAY</span>
-              <span id="turns"></span>
-            </div> -->
           <div class="spin">
             <img
               class="spin-arrow"
@@ -60,9 +63,11 @@
         </div>
       </div>
 
-      <div class="turns">Bạn còn <span id="play-count">0</span> lượt quay</div>
+      <div id="turns" class="turns">
+        Bạn còn <span id="play-count">0</span> lượt quay
+      </div>
 
-      <div class="missions">
+      <div id="missions" class="missions">
         <img class="missions-img" src="./images/more-turn.png" />
         <div class="missions-item">
           <img class="missions-item-img" src="./svgs/share-svg.svg" />
@@ -73,8 +78,6 @@
           <div id="btn-share" class="missions-item-share"></div>
         </div>
       </div>
-
-      <img class="more-info" src="./images/more-info.png" />
     </div>
     <!-- End: Content -->
 

@@ -13,6 +13,11 @@ const btnLoadingError = document.getElementById("loading-error-button");
 // Content
 const playCount = document.getElementById("play-count");
 const countShare = document.getElementById("count-share");
+const gameTitle = document.getElementById("game-title");
+const wheelWrapper = document.getElementById("wheel-wrapper");
+const turns = document.getElementById("turns");
+const missions = document.getElementById("missions");
+const endGame = document.getElementById("end-game");
 
 // Scripts.js file
 const wheel = document.querySelector(".wheel");

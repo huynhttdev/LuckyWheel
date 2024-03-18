@@ -11,9 +11,17 @@ const getWheelDetailsAPI = () => {
       clearInterval(timerGetWheelDetails);
       if (token && wheelId) {
         axiosClient.get(`/spin-games/${wheelId}`).then((response) => {
-          if (response.data.data?.spin_game?.items?.length === 8) {
-            renderGame(response.data.data);
+          if (response.data.data?.spin_game?.end_date) {
+            const endDate = new Date(response.data.data?.spin_game?.end_date);
+            const currDate = new Date();
+            if (endDate.getTime() < currDate.getTime()) {
+              return showEndGame();
+            }
           }
+          if (response.data.data?.spin_game?.items?.length === 8) {
+            return renderGame(response.data.data);
+          }
+          showError();
         });
       } else {
         showError();

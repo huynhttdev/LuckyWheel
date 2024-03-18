@@ -41,6 +41,13 @@ body {
   text-align: left;
 }
 
+.wrapper .end-game {
+  width: auto;
+  max-width: 37.5rem;
+  height: calc(100vh - 4.56rem - 11.76rem);
+  display: none;
+}
+
 .wrapper .title {
   margin-bottom: 1rem;
   width: 27.3rem;
@@ -92,53 +99,6 @@ body {
   width: 8.8rem;
   height: 8.9rem;
 }
-
-/* Start: Spin button */
-/* .wheel-wrapper .container .spin {
-  width: 6rem;
-  height: 6rem;
-  background-color: #b0271d;
-  position: absolute;
-  z-index: 1;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border: 0.4rem solid white;
-  user-select: none;
-}
-
-.wheel-wrapper .container .spin::after {
-  position: absolute;
-  top: -2rem;
-  content: "";
-  border-width: 0 1rem 2rem;
-  border-style: solid;
-  border-color: transparent;
-  border-bottom-color: white;
-}
-
-.wheel-wrapper .container .spin .btn-spin {
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: white;
-  margin-bottom: 0.4rem;
-  cursor: pointer;
-}
-
-.wheel-wrapper .container .spin #turns {
-  font-size: 1rem;
-  color: lightgray;
-  background-color: #ec3637;
-  padding: 0 1rem;
-  border-radius: 1rem;
-  border: 0.1rem solid lightgray;
-} */
-/* End: Spin button */
 
 .wheel-wrapper .container .wheel {
   position: absolute;
@@ -266,13 +226,6 @@ body {
   transform: scale(0.9);
 }
 /* End: Mission */
-
-.wrapper .more-info {
-  width: 100%;
-  max-width: 37.5rem;
-  /* background-color: red; */
-}
-/* End: Content */
 
 /* Start: Actions */
 .actions {

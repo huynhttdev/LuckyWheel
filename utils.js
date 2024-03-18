@@ -38,6 +38,12 @@ const showLoading = () => {
   loadingError.style.display = "none";
 };
 
+const offLoading = () => {
+  loading.style.display = "none";
+  loadingImg.style.display = "none";
+  loadingError.style.display = "none";
+};
+
 // Wheel
 const randomInRange = (start, end) => {
   const totalItems = end - start + 1;
@@ -214,4 +220,14 @@ const handleShareSuccess = () => {
     .catch(() => {
       window.ReactNativeWebView.postMessage("FACEBOOK_SHARE_FAIL");
     });
+};
+
+const showEndGame = () => {
+  endGame.style.display = "block";
+  loading.style.display = "none";
+  // Content
+  gameTitle.style.display = "none";
+  wheelWrapper.style.display = "none";
+  turns.style.display = "none";
+  missions.style.display = "none";
 };
