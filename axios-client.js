@@ -1,11 +1,11 @@
 let refreshTokenRequest = null;
 
-const axiosClient = axios.create({
-  baseURL: API_URL,
-});
+const axiosClient = axios.create({});
 
 const requestHandler = (config) => {
+  const apiUrl = getApiUrl();
   const accessToken = getToken();
+  config.baseURL = apiUrl;
   config.headers.set("Authorization", `Bearer ${accessToken}`);
   config.params = {
     ...config.params,
