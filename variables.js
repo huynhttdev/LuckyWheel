@@ -1,4 +1,4 @@
-const API_URL = "https://api-dev.forlife.one/khachhang-api/api/v1";
+const API_URL = document.getElementById("apiUrl");
 
 const token = document.getElementById("token");
 const refreshToken = document.getElementById("refresh-token");

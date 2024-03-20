@@ -3,6 +3,7 @@ const initData = (values) => {
   wheelId.value = values.wheelId;
   token.value = values.access_token;
   refreshToken.value = values.refresh_token;
+  API_URL.value = values.customerUrl;
 };
 const setToken = (value) => {
   token.value = value;
