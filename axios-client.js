@@ -24,7 +24,7 @@ const responseErrorHandler = async (err) => {
         ? refreshTokenRequest
         : axios({
             method: "POST",
-            baseURL: API_URL,
+            baseURL: getApiUrl(),
             url: "/accounts/me/token/refresh",
             headers: {
               Authorization: `Bearer ${refreshToken}`,
