@@ -334,8 +334,9 @@ body {
 }
 .loading .overlay .loading-error .loading-error-title {
   width: 100%;
+  max-width: 25rem;
   text-align: center;
-  padding: 1.6rem 0;
+  padding: 1.6rem;
   font-size: 1.6rem;
   font-weight: 500;
   border-bottom: 1px solid #ddd;
