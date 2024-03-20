@@ -17,10 +17,9 @@ html {
 
 body {
   font-family: "Open Sans", sans-serif;
-  background-size: cover;
+  background-size: 100% 100%;
   background-repeat: no-repeat;
-  /* background-attachment: fixed; */
-  height: 100vh;
+  min-height: 100vh;
   overflow: 0 auto;
 }
 
