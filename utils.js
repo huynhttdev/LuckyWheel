@@ -101,7 +101,7 @@ const renderPlayCount = (count) => {
 
 const renderMission = (mission) => {
   if (mission) {
-    const missionDate = new Date(mission);
+    const missionDate = new Date(mission.last_time_gain);
     const currentDate = new Date();
     if (currentDate.getDate() === missionDate.getDate()) {
       countShare.innerHTML = "1/1";
