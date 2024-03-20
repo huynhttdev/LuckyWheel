@@ -21,10 +21,10 @@ const getWheelDetailsAPI = () => {
           if (response.data.data?.spin_game?.items?.length === 8) {
             return renderGame(response.data.data);
           }
-          showError();
+          showError("Không đủ 8 sản phẩm");
         });
       } else {
-        showError();
+        showError("Không có token");
       }
     }
   }, 500);

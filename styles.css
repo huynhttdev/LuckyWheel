@@ -17,10 +17,7 @@ html {
 
 body {
   font-family: "Open Sans", sans-serif;
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
   min-height: 100vh;
-  overflow: 0 auto;
   overscroll-behavior: none;
 }
 
@@ -29,6 +26,20 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
+  overflow: 0 auto;
+}
+
+.wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+#bg-body {
+  position: absolute;
+  z-index: -1;
+  padding-bottom: 12rem;
+  width: 100%;
+  height: auto;
 }
 
 .wrapper .header {

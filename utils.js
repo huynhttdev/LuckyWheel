@@ -114,7 +114,6 @@ const renderMission = (mission) => {
 };
 
 const renderBackground = (imgLink) => {
-  document.body.style.backgroundImage = `url('${imgLink}')`;
   bgBody.src = imgLink;
 };
 
