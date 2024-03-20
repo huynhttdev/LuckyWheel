@@ -47,7 +47,7 @@ const responseErrorHandler = async (err) => {
   }
 
   if (!err.config?.url?.includes("do-mission")) {
-    showError();
+    showError(errorCodes[err.response.data.message]);
   }
   return Promise.reject(err);
 };
