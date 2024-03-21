@@ -179,11 +179,24 @@ const showNoMoreTurnsModal = () => {
   `;
 };
 
+const showCommonErrorModal = (msg) => {
+  modal.style.display = "block";
+  imgSuccess.style.display = "none";
+  btnContinueSpin.style.display = "none";
+  imgSpin.style.display = "inline-block";
+  btnUnderstand.style.display = "inline-block";
+  textSuccess.innerHTML = `
+    <span style="font-size: 14px; font-weight:700; line-height:20px; color: #EA580C">
+     ${msg}
+    </span>
+  `;
+};
+
 const hideModal = () => {
   modal.style.display = "none";
 };
 
-const showPreventModal = () => {
+const showNotSupportModal = () => {
   document.body.style.overflow = "hidden";
   document.body.style.pointerEvents = "none";
   preventModal.style.display = "flex";
