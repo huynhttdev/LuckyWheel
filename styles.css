@@ -39,7 +39,7 @@ body {
 #bg-body {
   position: absolute;
   z-index: -1;
-  padding-bottom: 12rem;
+  padding-bottom: 11.75rem;
   width: 100%;
   height: auto;
 }
