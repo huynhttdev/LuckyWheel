@@ -59,7 +59,7 @@ const getGiftName = (gift) => {
     return gift.name;
   }
   if (gift.type === "bonus_turns") {
-    return `Thêm ${gift.bonus_turns} lượt`;
+    return `Thêm lượt`;
   }
   return "";
 };
@@ -149,7 +149,10 @@ const showMoreTurnModal = (gift) => {
   btnContinueSpin.style.display = "inline-block";
   imgSpin.style.display = "inline-block";
   btnUnderstand.style.display = "none";
-  textSuccess.innerHTML = getGiftName(gift);
+  textSuccess.innerHTML = `
+    <div class="more-turns-title">Bạn đã nhận được</div>
+    <div class="more-turns-content">THÊM LƯỢT QUAY</div>
+  `;
   changeTurns(gift.bonus_turns);
 };
 

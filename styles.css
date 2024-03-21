@@ -418,6 +418,10 @@ body {
 .modal-success .overlay .content .text-success > span {
   font-weight: 700;
 }
+.modal-success .overlay .content .text-success .more-turns-content {
+  font-weight: 700;
+  color: #ea580b;
+}
 .modal-success .overlay .content .success-actions {
   margin-top: 1.2rem;
 }
