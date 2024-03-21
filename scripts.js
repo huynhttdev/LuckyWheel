@@ -12,7 +12,7 @@ mainTag.addEventListener("message", (message) => {
 const onDocumentLoad = () => {
   if (checkRedirectUrl()) return;
   if (!isWebview(navigator.userAgent)) {
-    return showPreventModal();
+    return showNotSupportModal();
   }
   loading.style.display = "block";
   getWheelDetailsAPI();
@@ -53,23 +53,27 @@ btnSpin.addEventListener("click", () => {
   }
   if (isWheelStopped) {
     isWheelStopped = false;
-    getSpinResultAPI().then((res) => {
-      const selectedGift = gifts.find(({ id }) => res.id === id);
-      const surplus = totalDegree % 360;
-      const spinDegree = (selectedGift.degree - surplus + 360) % 360;
-      totalDegree += randomInRange(spinDegree - 40, spinDegree - 5) + 2880;
-      wheel.style.transform = `rotate(${totalDegree}deg)`;
+    getSpinResultAPI()
+      .then((res) => {
+        const selectedGift = gifts.find(({ id }) => res.id === id);
+        const surplus = totalDegree % 360;
+        const spinDegree = (selectedGift.degree - surplus + 360) % 360;
+        totalDegree += randomInRange(spinDegree - 40, spinDegree - 5) + 2880;
+        wheel.style.transform = `rotate(${totalDegree}deg)`;
 
-      setTimeout(() => {
+        setTimeout(() => {
+          isWheelStopped = true;
+          if (selectedGift.type === "voucher") {
+            showSuccessModal(selectedGift);
+          } else if (selectedGift.type === "bonus_turns") {
+            showMoreTurnModal(selectedGift);
+          } else {
+            showLuckyModal(selectedGift);
+          }
+        }, 8000);
+      })
+      .catch(() => {
         isWheelStopped = true;
-        if (selectedGift.type === "voucher") {
-          showSuccessModal(selectedGift);
-        } else if (selectedGift.type === "bonus_turns") {
-          showMoreTurnModal(selectedGift);
-        } else {
-          showLuckyModal(selectedGift);
-        }
-      }, 8000);
-    });
+      });
   }
 });
