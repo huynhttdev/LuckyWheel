@@ -1,5 +1,5 @@
 // Init
-const mainTag = isAndroid() ? document : document;
+const mainTag = isAndroid() ? document : window;
 mainTag.addEventListener("message", (message) => {
   const data = JSON.parse(message.data);
   if (data.wheelId) {
