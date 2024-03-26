@@ -57,7 +57,7 @@ btnSpin.addEventListener("click", () => {
   const currDate = new Date();
   const startDate = new Date(getStartDate());
   if (currDate.getTime() < startDate.getTime()) {
-    return showError(
+    return showCommonErrorModal(
       `Game vòng quay may mắn sẽ bắt đầu từ ${startDate.getHours()}h${startDate.getMinutes()}' ngày ${startDate.getDate()}-${
         startDate.getMonth() + 1
       }-${startDate.getFullYear()}`
