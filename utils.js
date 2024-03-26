@@ -118,10 +118,10 @@ const renderBackground = (imgLink) => {
 };
 
 const renderGame = (data) => {
+  renderBackground(data.spin_game.background.link);
   renderWheel(data.spin_game.items);
   renderPlayCount(data.remain_turn_count);
   renderMission(data.missions[0]);
-  renderBackground(data.spin_game.background.link);
 };
 
 const changeTurns = (num) => {
