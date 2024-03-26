@@ -249,7 +249,9 @@ const handleShareSuccess = () => {
 
 const showEndGame = () => {
   endGame.style.display = "block";
+  endGame.style.marginTop = "-20px";
   loading.style.display = "none";
+  bgBody.src = "./images/background.png";
   // Content
   gameTitle.style.display = "none";
   wheelWrapper.style.display = "none";
