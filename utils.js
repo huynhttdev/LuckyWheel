@@ -160,7 +160,7 @@ const showMoreTurnModal = (gift) => {
     <div class="more-turns-title">Bạn đã nhận được</div>
     <div class="more-turns-content">THÊM LƯỢT QUAY</div>
   `;
-  changeTurns(gift.bonus_turns);
+  changeTurns(gift.bonus_turns - 1);
 };
 
 const showLuckyModal = (gift) => {
