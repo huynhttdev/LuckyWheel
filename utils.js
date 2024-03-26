@@ -20,6 +20,12 @@ const getRefreshToken = () => {
 const getWheelId = () => {
   return wheelId.value;
 };
+const setStartDate = (start_date) => {
+  startDate.value = start_date;
+};
+const getStartDate = () => {
+  return startDate.value;
+};
 
 // Loading
 const offLoadingError = () => {
@@ -122,6 +128,7 @@ const renderGame = (data) => {
   renderWheel(data.spin_game.items);
   renderPlayCount(data.remain_turn_count);
   renderMission(data.missions[0]);
+  setStartDate(data.spin_game.start_date);
 };
 
 const changeTurns = (num) => {

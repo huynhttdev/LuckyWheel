@@ -3,6 +3,7 @@ const API_URL = document.getElementById("apiUrl");
 const token = document.getElementById("token");
 const refreshToken = document.getElementById("refresh-token");
 const wheelId = document.getElementById("wheelId");
+const startDate = document.getElementById("start-date");
 
 // Loading
 const loading = document.getElementById("loading");

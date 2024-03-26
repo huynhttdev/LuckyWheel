@@ -1,5 +1,5 @@
 // Init
-const mainTag = isAndroid() ? document : window;
+const mainTag = isAndroid() ? document : document;
 mainTag.addEventListener("message", (message) => {
   const data = JSON.parse(message.data);
   if (data.wheelId) {
@@ -11,9 +11,9 @@ mainTag.addEventListener("message", (message) => {
 
 const onDocumentLoad = () => {
   if (checkRedirectUrl()) return;
-  if (!isWebview(navigator.userAgent)) {
-    return showNotSupportModal();
-  }
+  // if (!isWebview(navigator.userAgent)) {
+  //   return showNotSupportModal();
+  // }
   loading.style.display = "block";
   getWheelDetailsAPI();
 };
@@ -48,9 +48,23 @@ btnShare.addEventListener("click", () => {
 });
 
 btnSpin.addEventListener("click", () => {
+  // Check turns
   if (getTurns() <= 0) {
     return showNoMoreTurnsModal();
   }
+
+  // Check start date
+  const currDate = new Date();
+  const startDate = new Date(getStartDate());
+  if (currDate.getTime() < startDate.getTime()) {
+    return showError(
+      `Game vòng quay may mắn sẽ bắt đầu từ ${startDate.getHours()}h${startDate.getMinutes()}' ngày ${startDate.getDate()}-${
+        startDate.getMonth() + 1
+      }-${startDate.getFullYear()}`
+    );
+  }
+
+  // Spin
   if (isWheelStopped) {
     isWheelStopped = false;
     getSpinResultAPI()
