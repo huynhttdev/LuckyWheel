@@ -144,8 +144,8 @@ body {
 }
 
 .wheel-wrapper .container .wheel .gift .gift-content .gift-image {
-  width: calc(3.6rem * 1.2);
-  max-height: calc(4.8rem * 1.2);
+  width: calc(3.6rem * 1.4);
+  max-height: calc(4.8rem * 1.4);
 }
 
 .wheel-wrapper .container .wheel .gift .gift-content .gift-name {
