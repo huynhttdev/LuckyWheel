@@ -92,7 +92,7 @@ const renderWheel = (data) => {
       <div class="gift-content">
         <span class="gift-name">${getGiftName(gift)}</span>
         <img onload="setImageFlag(${index + 1})" src="${
-        gift.image.link
+        gift.image.thumbnail ?? gift.image.link
       }" alt="Gift" class="gift-image" />
       </div>
     </span>
