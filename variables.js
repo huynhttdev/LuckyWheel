@@ -12,6 +12,8 @@ const loadingError = document.getElementById("loading-error");
 const btnLoadingError = document.getElementById("loading-error-button");
 
 // Content
+const imageLoadedFlags = Array(9).fill(false);
+const TIME_OUT_RENDER = 30; // 30s
 const playCount = document.getElementById("play-count");
 const countShare = document.getElementById("count-share");
 const gameTitle = document.getElementById("game-title");

@@ -91,14 +91,15 @@ const renderWheel = (data) => {
     >
       <div class="gift-content">
         <span class="gift-name">${getGiftName(gift)}</span>
-        <img src="${gift.image.link}" alt="Gift" class="gift-image" />
+        <img onload="setImageFlag(${index + 1})" src="${
+        gift.image.link
+      }" alt="Gift" class="gift-image" />
       </div>
     </span>
     `;
       return sectionHTML;
     })
     .join("");
-  loading.style.display = "none";
 };
 
 const renderPlayCount = (count) => {
@@ -123,7 +124,26 @@ const renderBackground = (imgLink) => {
   bgBody.src = imgLink;
 };
 
+const setImageFlag = (index) => {
+  imageLoadedFlags[index] = true;
+};
+
+const waitForImageLoaded = () => {
+  let counter = 0;
+  const intervalId = setInterval(() => {
+    ++counter;
+    if (counter > TIME_OUT_RENDER) {
+      clearInterval(intervalId);
+      showError("Lỗi tải dữ liệu");
+    } else if (imageLoadedFlags.every((f) => f)) {
+      clearInterval(intervalId);
+      loading.style.display = "none";
+    }
+  }, 1000);
+};
+
 const renderGame = (data) => {
+  waitForImageLoaded();
   renderBackground(data.spin_game.background.link);
   renderWheel(data.spin_game.items);
   renderPlayCount(data.remain_turn_count);
