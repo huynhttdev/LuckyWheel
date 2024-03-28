@@ -11,10 +11,9 @@ mainTag.addEventListener("message", (message) => {
 
 const onDocumentLoad = () => {
   if (checkRedirectUrl()) return;
-  // if (!isWebview(navigator.userAgent)) {
-  //   return showNotSupportModal();
-  // }
-  loading.style.display = "block";
+  if (!isWebview(navigator.userAgent)) {
+    return showNotSupportModal();
+  }
   getWheelDetailsAPI();
 };
 

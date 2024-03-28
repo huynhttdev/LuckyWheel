@@ -322,7 +322,7 @@ body {
   background-color: #fff;
   width: 100vw;
   height: 100vh;
-  display: none;
+  display: block;
 }
 .loading .overlay {
   position: absolute;
