@@ -201,7 +201,7 @@ const showNoMoreTurnsModal = () => {
   btnUnderstand.style.display = "inline-block";
   textSuccess.innerHTML = `
     <span style="font-size: 14px; font-weight:700; line-height:20px; color: #EA580C">
-      Bạn đã hết lượt quay. Hãy trở lại vào ngày mai để chơi tiếp nhé!
+      Bạn đã hết lượt quay. Hãy quay lại chơi vào ngày mai nhé!
     </span>
   `;
 };
