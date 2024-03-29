@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap");
 
 :root {
-  --wheel-width: 294px;
+  --wheel-width: calc(100vw - 4rem);
   --wheel-background: white;
 }
 
@@ -144,8 +144,8 @@ body {
 }
 
 .wheel-wrapper .container .wheel .gift .gift-content .gift-image {
-  width: calc(3.6rem * 1.5);
-  max-height: calc(3.6rem * 1.5);
+  width: calc(3.6rem * 1.7);
+  max-height: calc(3.6rem * 1.7);
 }
 
 .wheel-wrapper .container .wheel .gift .gift-content .gift-name {
